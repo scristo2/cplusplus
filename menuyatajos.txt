@@ -1,0 +1,45 @@
+###.h
+#pragma once;
+#include<wx/wx.h>
+
+class MyMenuBar :public wxMenuBar {
+public:
+	MyMenuBar();
+
+private:
+	//ctrl + s
+	void atajoSaved(wxCommandEvent& event);
+};
+
+
+
+#include<menu.h>
+
+MyMenuBar::MyMenuBar() {
+
+	wxMenu* fileMenu = new wxMenu();
+	wxMenu* editmenu = new wxMenu();
+
+	wxMenuItem* savedfile = new wxMenuItem(editmenu, wxID_SAVE, wxT("&Guardar\tCtrl+S")); ##añadir el atajo
+
+
+
+	fileMenu->Append(wxID_OPEN, wxT("&Abrir"));
+
+	fileMenu->Append(wxID_CLOSE, wxT("salir"));
+
+	editmenu->Append(savedfile);
+
+	//aframos a la barra del menu archivo
+	this->Append(fileMenu, "&Archivo");
+	this->Append(editmenu, "&editar");
+
+
+	Bind(wxEVT_MENU, &MyMenuBar::atajoSaved, this, wxID_SAVE);  ###zz y se lo adjutamos
+
+
+}
+
+void MyMenuBar::atajoSaved(wxCommandEvent& event){
+	wxMessageBox(wxT("file saved"), wxT("guardado"), wxOK, this);
+}
