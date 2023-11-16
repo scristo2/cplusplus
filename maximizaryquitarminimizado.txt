@@ -1,0 +1,41 @@
+SetWindowStyle(GetWindowStyle() & ~wxMAXIMIZE_BOX);  // Deshabilita el botón de maximizar
+Maximize();  // Maximiza el marco para ocupar toda la pantalla
+SetSizeHints(wxDefaultSize, wxDefaultSize); 
+
+esto en el construct del frame
+#include<frameHome.h>
+
+
+
+FrameHome::FrameHome(const wxString& title, const wxPoint& pos, const wxSize& size)
+    :wxFrame(NULL, wxID_ANY, title, pos, size), boton(nullptr), secondFrame(nullptr){
+
+    wxScrolledWindow* containerscrolled = new wxScrolledWindow(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxVSCROLL | wxHSCROLL);
+    containerscrolled->SetBackgroundColour(wxColour(20, 40, 60));
+    
+    wxBoxSizer* buttonBoxSizer = new wxBoxSizer(wxVERTICAL);
+    
+    for (int i = 0; i < 40; i++) {
+
+        boton = new wxButton(containerscrolled, wxID_ANY, wxString::Format("boton %d", i + 1), wxDefaultPosition, wxDefaultSize);
+
+        buttonBoxSizer->Add(boton, 0, wxALIGN_TOP, 5);
+    }
+
+    containerscrolled->SetSizer(buttonBoxSizer);
+
+    containerscrolled->SetScrollRate(0, 10);
+
+    <<<<<<<<<<<<<<<<<<aquiiiiiiiiiiii
+    SetWindowStyle(GetWindowStyle() & ~wxMAXIMIZE_BOX);  // Deshabilita el botón de maximizar
+    Maximize();  // Maximiza el marco para ocupar toda la pantalla
+    SetSizeHints(wxDefaultSize, wxDefaultSize);  // Deshabilita la capacidad de redimensionamiento
+}
+
+void FrameHome::goBack(wxCommandEvent& event){
+    secondFrame = new FrameSecond("araknet",wxDefaultPosition, wxSize(600, 600));
+    secondFrame->CenterOnScreen();
+    secondFrame->Show(true);
+    this->Hide();
+
+}
