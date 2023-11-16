@@ -1,0 +1,17 @@
+int status = wxMessageBox(wxT("file saved"), wxT("guardado"), wxYES_NO | wxICON_QUESTION, this);
+
+if (status == wxYES) {
+
+	wxMessageBox(wxT("confirmado"), wxT("RESULT"), wxOK);
+
+}
+else if (status == wxNO) {
+
+	wxMessageBox(wxT("denegado"), wxT("result"), wxOK, this);
+
+
+}
+else {
+
+	wxMessageBox(wxT("ha cerradola pregunta"), wxT("result"), wxOK, this);
+}
