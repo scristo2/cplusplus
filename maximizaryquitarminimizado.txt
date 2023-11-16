@@ -30,6 +30,11 @@ FrameHome::FrameHome(const wxString& title, const wxPoint& pos, const wxSize& si
     SetWindowStyle(GetWindowStyle() & ~wxMAXIMIZE_BOX);  // Deshabilita el botón de maximizar
     Maximize();  // Maximiza el marco para ocupar toda la pantalla
     SetSizeHints(wxDefaultSize, wxDefaultSize);  // Deshabilita la capacidad de redimensionamiento
+
+
+<<<<<<<<<<<<usar este si solo quieres toda la pantalla y qu eno se pueda reducir
+Maximize();  // Maximiza el marco para ocupar toda la pantalla
+SetMinSize(wxSize(wxGetDisplaySize()));
 }
 
 void FrameHome::goBack(wxCommandEvent& event){
