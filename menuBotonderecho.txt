@@ -1,0 +1,18 @@
+FrameHome::FrameHome(const wxString& title, const wxPoint& pos, const wxSize& size)
+    :wxFrame(NULL, wxID_ANY, title, pos, size), boton(nullptr), secondFrame(nullptr){
+
+  
+    //binds
+    <<<en el construictor,añadirmos el bind, el wxevt_context_menu salta cuando le das boton derecho en el frame
+    Bind(wxEVT_CONTEXT_MENU, &FrameHome::onContextMenu, this);
+}
+
+
+void FrameHome::onContextMenu(wxContextMenuEvent& event) {
+
+    wxMenu* menu = new wxMenu();
+
+    menu->Append(wxID_ANY, wxT("tested"));
+
+    PopupMenu(menu, event.GetPosition());
+}
